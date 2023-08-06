@@ -343,7 +343,7 @@ if Config.EnableJobOutfitsCommand then
     end)
 end
 
-lib.addCommand("reloadskin", { help = _L("commands.reloadskin.title") }, function(source)
+lib.addCommand("rs", { help = _L("commands.reloadskin.title") }, function(source)
     TriggerClientEvent("illenium-appearance:client:reloadSkin", source)
 end)
 
