@@ -104,28 +104,28 @@ Config.Blips = {
         Show = true,
         Sprite = 366,
         Color = 47,
-        Scale = 0.7,
+        Scale = 0.8,
         Name = "Clothing Store",
     },
     ["barber"] = {
         Show = true,
         Sprite = 71,
         Color = 0,
-        Scale = 0.7,
+        Scale = 0.8,
         Name = "Barber",
     },
     ["tattoo"] = {
         Show = true,
         Sprite = 75,
         Color = 4,
-        Scale = 0.7,
+        Scale = 0.8,
         Name = "Tattoo Shop",
     },
     ["surgeon"] = {
         Show = true,
         Sprite = 102,
         Color = 4,
-        Scale = 0.7,
+        Scale = 0.8,
         Name = "Plastic Surgeon",
     }
 }
@@ -555,7 +555,23 @@ Config.Stores = {
             vector3(293.56317138672, -572.60675048828, 43.26),
             vector3(296.28656005859, -570.330078125, 43.26)
         }
-    }
+    },
+    {
+        type = "clothing",
+        coords = vector4(-813.29, -600.0, 30.28, 327.17),
+        size = vector3(4, 4, 4),
+        rotation = 45,
+        usePoly = false, -- false => uses the size + rotation to create the zone | true => uses points to create the zone
+        showBlip = true, -- overrides the blip visibilty configured above for the group
+        --targetModel = "s_m_m_doctor_01", -- overrides the target ped configured for the group
+        --targetScenario = "" -- overrides the target scenario configure for the group
+        points = {
+            vector3(-809.95, -591.23, 30.28),
+            vector3(-793.5, -599.6, 30.28),
+            vector3(-798.79, -608.74, 30.28),
+            vector3(-816.46, -600.55, 30.28)
+        }
+    },
 }
 
 
