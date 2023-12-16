@@ -107,12 +107,14 @@ function SetInitialClothes(initial)
     ClearPedDecorations(ped)
 end
 
-function InitializeCharacter(gender, onSubmit, onCancel)
+function InitializeCharacter(gender, onSubmit, onCancel) -- eh_cutscene
     SetInitialClothes(Config.InitialPlayerClothes[gender])
     local config = getNewCharacterConfig()
     TriggerServerEvent("illenium-appearance:server:ChangeRoutingBucket")
     client.startPlayerCustomization(function(appearance)
         if (appearance) then
+            TriggerEvent("eh_cutscene:client:StartCutscene") -->> Start eh_cutscene
+            print('^2Started eh_cutscene')
             TriggerServerEvent("illenium-appearance:server:saveAppearance", appearance)
             if onSubmit then
                 onSubmit()
@@ -124,6 +126,24 @@ function InitializeCharacter(gender, onSubmit, onCancel)
         TriggerServerEvent("illenium-appearance:server:ResetRoutingBucket")
     end, config)
 end
+
+-- function InitializeCharacter(gender, onSubmit, onCancel)
+--     SetInitialClothes(Config.InitialPlayerClothes[gender])
+--     local config = getNewCharacterConfig()
+--     TriggerServerEvent("illenium-appearance:server:ChangeRoutingBucket")
+--     client.startPlayerCustomization(function(appearance)
+--         if (appearance) then
+--             TriggerServerEvent("illenium-appearance:server:saveAppearance", appearance)
+--             if onSubmit then
+--                 onSubmit()
+--             end
+--         elseif onCancel then
+--             onCancel()
+--         end
+--         Framework.CachePed()
+--         TriggerServerEvent("illenium-appearance:server:ResetRoutingBucket")
+--     end, config)
+-- end
 
 function OpenShop(config, isPedMenu, shopType)
     lib.callback("illenium-appearance:server:hasMoney", false, function(hasMoney, money)
@@ -693,7 +713,7 @@ RegisterNetEvent("illenium-appearance:client:deleteOutfit", function(id)
     TriggerServerEvent("illenium-appearance:server:deleteOutfit", id)
     lib.notify({
         title = _L("outfits.delete.success.title"),
-        description = _L("outfits.delete.success.description"),
+        description = _L("outfits.delete.success.failure"),
         type = "success",
         position = Config.NotifyOptions.position
     })
